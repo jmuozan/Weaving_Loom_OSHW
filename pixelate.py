@@ -24,7 +24,7 @@ def analyze_binary_image(image_path, target_width, output_path):
     for i, (black, white) in enumerate(row_counts):
         print(f"Row {i+1}: {black} black, {white} white")
     
-    print("\nBinary representation of each row (0=black, 1=white):")
+    print("\nBinary representation of each row (0=black, 1=white):") 
     for i, row in enumerate(pixel_lists):
         print(f"Row {i+1}: {row}")
     
