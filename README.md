@@ -1,5 +1,6 @@
 - [ ] Design loom
 - [ ] Mechanism Electronics up and down 
 - [ ] GH script from images to pixels
+- [ ] Weaving code, How it works?
 - [ ] AI image generation implementation
 - [ ] Documentation
