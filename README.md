@@ -5,3 +5,25 @@
 - [ ] Weaving code, How it works?
 - [ ] AI image generation implementation
 - [ ] Documentation
+
+
+
+
+https://youtu.be/lYGXRYmATks?feature=shared
+
+
+
+
+
+
+Modificaciones Loom:
+- [ ] Partir en trozos parte central
+- [ ] Parte inferior para motor
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
