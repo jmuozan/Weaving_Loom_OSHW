@@ -1,0 +1,5 @@
+-[ ] Design loom
+-[ ] Mechanism Electronics up and down 
+-[ ] GH script from images to pixels
+-[ ] AI image generation implementation
+-[ ] Documentation
