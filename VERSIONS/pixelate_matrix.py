@@ -31,4 +31,4 @@ def analyze_binary_image(image_path, target_width, output_path):
     return binary, row_counts, pixel_lists
 
 # Usage:
-binary_array, counts, lists = analyze_binary_image("apple_test.jpg", 10, "output.png")
+binary_array, counts, lists = analyze_binary_image("input.jpg", 8, "output.png")
