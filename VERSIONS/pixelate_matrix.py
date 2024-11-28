@@ -3,7 +3,7 @@ import numpy as np
 
 # Configuration variables
 GROUP_SIZE = 4        # Number of pixels per group
-TARGET_WIDTH = 20     # Width of the image in pixels
+TARGET_WIDTH = 40     # Width of the image in pixels
 
 def analyze_binary_image(image_path, output_path):
     NUM_GROUPS = TARGET_WIDTH // GROUP_SIZE
