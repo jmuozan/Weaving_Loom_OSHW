@@ -13,7 +13,7 @@ void loop() {
   if (Serial.available()) {
     valor = Serial.parseInt();
     if (valor) {
-      myservo.write(180);
+      myservo.write(90);
     } else {
       myservo.write(0);
     }

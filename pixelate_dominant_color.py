@@ -25,15 +25,24 @@ def analyze_and_transmit(image_path, target_width, output_path, serial_port, bau
         binary_image.save(output_path)
 
         print("\nAnalyzing and transmitting row data:")
+        total_rows = len(binary)
         for i, row in enumerate(binary):
-            # Calculate dominant color
             white_count = np.sum(row == 1)
             black_count = np.sum(row == 0)
             dominant_color = 1 if white_count > black_count else 0
-            print(f"Row {i+1}: {dominant_color}")
-            
+            print(f"Processing Row {i+1} of {total_rows}: Dominant color = {dominant_color}")
+            print(f"Progress: {((i+1)/total_rows)*100:.1f}%")
             SerialObj.write(str(dominant_color).encode())
-            time.sleep(0.1)
+            
+            # Wait time between rows
+            if i < total_rows - 1:
+                print(f"Waiting 20 seconds before processing next row...")
+                time.sleep(5)
+        
+        # Add final wait before closing
+        print("Processing complete. Waiting 20 seconds before closing...")
+        time.sleep(5)
+        print("-" * 50)
 
     except Exception as e:
         print(f"Error during processing: {e}")
@@ -44,7 +53,7 @@ def analyze_and_transmit(image_path, target_width, output_path, serial_port, bau
 if __name__ == "__main__":
     analyze_and_transmit(
         image_path="input.png",
-        target_width=10,
+        target_width=5,
         output_path="output.png",
-        serial_port='/dev/cu.usbmodem1201'
+        serial_port='/dev/cu.usbmodem1301'
     )
