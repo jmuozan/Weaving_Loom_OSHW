@@ -1,10 +1,23 @@
-- [ ] Design loom (Adapting what we already have)
-- [ ] Mechanism  design
-- [ ] Mechanism Electronics up and down 
-- [ ] GH script from images to pixels
-- [ ] Weaving code, How it works?
+- [x] Design loom (Adapting what we already have)
+- [x] Mechanism  design
+- [x] Mechanism Electronics up and down 
+- [x] script from images to pixels
+- [x] Weaving code, How it works?
+- [ ] Print pieces
+- [ ] Laser cut pieces of the loom and PearGears
+- [ ] Assembly
 - [ ] AI image generation implementation
 - [ ] Documentation
+
+# Weaving Loom Machine Open Source Hardware Week
+
+
+
+
+
+
+
+
 
 
 
@@ -13,6 +26,7 @@
 
 
 # References
+
 https://youtu.be/lYGXRYmATks?feature=shared
 https://www.instructables.com/DIY-Laser-Cut-Rigid-Heddle-Loom-Part-2-Weaving-Wit/
 https://gitlab.com/electronicsnufkin/WeaveMe

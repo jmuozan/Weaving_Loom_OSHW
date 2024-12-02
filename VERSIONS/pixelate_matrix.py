@@ -1,11 +1,20 @@
 from PIL import Image
 import numpy as np
+import serial
+import time
 
 # Configuration variables
 GROUP_SIZE = 4        # Number of pixels per group
-TARGET_WIDTH = 40     # Width of the image in pixels
+TARGET_WIDTH = 20     # Width of the image in pixels
+SERIAL_PORT = '/dev/cu.usbmodem1401'
+BAUD_RATE = 9600
+DELAY_SECONDS = 10    # Delay between rows
 
 def analyze_binary_image(image_path, output_path):
+    # Initialize serial connection
+    ser = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=1)
+    time.sleep(2)  # Wait for serial connection to establish
+    
     NUM_GROUPS = TARGET_WIDTH // GROUP_SIZE
     
     # resize
@@ -46,26 +55,23 @@ def analyze_binary_image(image_path, output_path):
             expanded_row.extend([value] * GROUP_SIZE)
         expanded_lists.append(expanded_row)
         
-        # Create group number representation (1-based numbering)
-        group_row = []
-        for i, value in enumerate(compressed_row, 1):
-            #group_row.append(f"G{i}:{value}")
-            group_row.append(f"{value}")
-        group_numbers.append(group_row)
-    '''
-    print(f"\nImage configuration:")
-    print(f"Width: {TARGET_WIDTH} pixels")
-    print(f"Group size: {GROUP_SIZE} pixels")
-    print(f"Number of groups per row: {NUM_GROUPS}")
-    '''
-    print("\nSimplified group representation (Group:Value):")
-    for i, row in enumerate(group_numbers):
-        print(f"Row {i+1}: {row}")
-        
-    print("\nFull binary representation (0=black, 1=white):")
-    for i, row in enumerate(expanded_lists):
-        print(f"Row {i+1}: {row}")
+        # Create group number representation and send to serial
+        row_binary = ''.join(str(value) for value in compressed_row)
+        print(f"Sending row: {row_binary}")
+        ser.write(f"{row_binary}\n".encode())  # Send row with newline
+        time.sleep(DELAY_SECONDS)  # Wait before sending next row
+        print(f"Waiting {DELAY_SECONDS} seconds untill next row")
+        group_numbers.append(compressed_row)
 
+    # Close serial connection
+    ser.close()
+    
     return binary, row_counts, expanded_lists, group_numbers
 
-binary_array, counts, expanded, groups = analyze_binary_image("input.jpg", "output.png")
+try:
+    binary_array, counts, expanded, groups = analyze_binary_image("duck.png", "output.png")
+except serial.SerialException as e:
+    print(f"Error: Could not open serial port {SERIAL_PORT}. Make sure it's connected and the port name is correct.")
+    print(f"Error details: {e}")
+except Exception as e:
+    print(f"An error occurred: {e}")
