@@ -27,7 +27,7 @@ def analyze_binary_image(image_path, output_path):
     binary = np.array(resized) > 127
     binary_image = Image.fromarray(binary.astype(np.uint8) * 255)
     binary_image.save(output_path)
-    
+     
     row_counts = []
     pixel_lists = []
     expanded_lists = []
